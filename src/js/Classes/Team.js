@@ -42,15 +42,7 @@ export default class Team {
    * @iterator
    * @returns персонажей, по одному в порядке добавления в команду
    */
-  [Symbol.iterator]() {
-    const members = this.members.keys();
-
-    return {
-      next() {
-        const value = members.next().value;
-
-        return value ? { done: false, value } : { done: true };
-      },
-    };
+  *[Symbol.iterator]() {
+    yield* this.members.keys();
   }
 }
